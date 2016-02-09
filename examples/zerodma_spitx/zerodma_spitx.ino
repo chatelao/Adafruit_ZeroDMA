@@ -1,6 +1,7 @@
 #include <SPI.h>
-#include <Adafruit_ZeroDMA.h>
 #include <Adafruit_ASFcore.h>
+#include "status_codes.h"
+#include <Adafruit_ZeroDMA.h>
 #include "utility/dmac.h"
 #include "utility/dma.h"
 
@@ -58,7 +59,7 @@ void setup() {
   Serial.println("Starting transfer job");
   
   // set up SPI
-  SPI.beginTransaction(SPISettings(16000000, MSBFIRST, SPI_MODE0));
+  SPI.beginTransaction(SPISettings(12000000, MSBFIRST, SPI_MODE0));
   
   // 'raw' pin control, #13 is a.k.a PA17, we're using this for timing
   PORT->Group[0].OUTSET.reg = (1 << 17);  // set PORTA.17 high  "digitalWrite(13, HIGH)"
